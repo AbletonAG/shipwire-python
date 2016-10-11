@@ -19,9 +19,22 @@ METHODS = {
         'trackings': ['GET', 'orders', '/trackings'],
         'list': ['GET', 'orders'],
         'split_orders': ['GET', 'orders', '/splitOrders'],
+        'pieces': ['GET', 'orders', '/pieces'],
     },
     'orders': {
         'list': ['GET', 'orders']
+    },
+    'purchaseOrder': {
+        'create': ['POST', 'purchaseOrders'],
+        'get': ['GET', 'purchaseOrders', ''],
+        'modify': ['PUT', 'purchaseOrders', ''],
+        'cancel': ['POST', 'purchaseOrders', '/cancel'],
+        'items': ['GET', 'purchaseOrders', '/items'],
+        'trackings': ['GET', 'purchaseOrders', '/trackings'],
+        'approve': ['POST', 'purchaseOrders', '/approve'],
+    },
+    'purchaseOrders': {
+        'list': ['GET', 'purchaseOrders']
     },
     'stock': {
         'products': ['GET', 'stock']

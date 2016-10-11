@@ -112,6 +112,10 @@ class ReturnsResponse(ListResponse):
     pass
 
 
+class PiecesResponse(ListResponse):
+    pass
+
+
 class TrackingsResponse(ListResponse):
     pass
 
