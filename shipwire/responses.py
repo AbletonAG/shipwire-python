@@ -130,3 +130,7 @@ class QuoteResponse(ShipwireResponse):
 
 class Split_ordersResponse(ListResponse):
     pass
+
+
+class ApproveResponse(ShipwireResponse):
+    pass

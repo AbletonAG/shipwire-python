@@ -24,17 +24,15 @@ METHODS = {
     'orders': {
         'list': ['GET', 'orders']
     },
-    'purchaseOrder': {
-        'create': ['POST', 'purchaseOrders'],
+    'purchase_order': {
+        'list': ['GET', 'purchaseOrders'],
         'get': ['GET', 'purchaseOrders', ''],
+        'create': ['POST', 'purchaseOrders'],
         'modify': ['PUT', 'purchaseOrders', ''],
         'cancel': ['POST', 'purchaseOrders', '/cancel'],
         'items': ['GET', 'purchaseOrders', '/items'],
         'trackings': ['GET', 'purchaseOrders', '/trackings'],
         'approve': ['POST', 'purchaseOrders', '/approve'],
-    },
-    'purchaseOrders': {
-        'list': ['GET', 'purchaseOrders']
     },
     'stock': {
         'products': ['GET', 'stock']
@@ -85,7 +83,7 @@ METHODS = {
 
 class Shipwire():
     """ Shipwire API class."""
-    def __init__(self, username='neil@example.com', password='your-password',
+    def __init__(self, username, password,
                  host='api.shipwire.com', api_version=3, secure=True,
                  raise_on_errors=False, timeout=None, **kwargs):
         self.host = host
@@ -106,7 +104,7 @@ class Shipwire():
             when __ the copying causes recurssion. """
             raise AttributeError(name)
         elif self.resource:
-            if name in list(METHODS[self.resource].keys()):
+            if name in METHODS[self.resource]:
                 self.method = name
             else:
                 raise ShipwireError('The \'%s\' attribute is not currently defined.'
