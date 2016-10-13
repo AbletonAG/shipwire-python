@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
   name = 'shipwire',
   packages = ['shipwire'], # this must be the same as the name above
-  version = '0.9.2.Ableton.2',
+  version = '0.9.2',
   description = 'A Python abstraction layer around the Shipwire API.',
   author = 'Neil Durbin, John Coogan, Clark Fischer',
   author_email = 'neildurbin@gmail.com',
