@@ -80,6 +80,10 @@ class ShipwireTestCase(TestCase):
         with self.assertRaises(api.ShipwireError):
             self.client.orders()
 
+    def test_get_without_request_data(self):
+        self.client.webhooks.list()
+        self.assertIsNone(api.requests.request.call_args[1]['json'])
+
     def test_call_generates_correct_order_url(self):
         self.client.orders.list()
         self.assert_url_method(self.client, 'GET', '/orders')

@@ -93,7 +93,7 @@ class Shipwire():
         self.resource  = False
         self.method = False
         self.call_params = False
-        self.json = ''
+        self.json = None
         self.uri = ''
         self.raise_on_errors = raise_on_errors
         self.timeout = timeout
