@@ -120,6 +120,9 @@ class ShipwireTestCase(TestCase):
         self.client.order.split_orders(id=12345)
         self.assert_url_method(self.client, 'GET', '/orders/12345/splitOrders')
 
+        self.client.order.serial_numbers(id=12345, item_id=67890)
+        self.assert_url_method(self.client, 'GET', '/orders/12345/items/67890/serialNumbers')
+
     def test_call_generates_correct_purchase_order_url(self):
         self.client.purchase_order.list()
         self.assert_url_method(self.client, 'GET', '/purchaseOrders')

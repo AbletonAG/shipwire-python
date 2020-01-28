@@ -20,6 +20,7 @@ METHODS = {
         'list': ['GET', 'orders'],
         'split_orders': ['GET', 'orders', '/splitOrders'],
         'pieces': ['GET', 'orders', '/pieces'],
+        'serial_numbers': ['GET' , 'orders', 'items', '/serialNumbers'],
     },
     'orders': {
         'list': ['GET', 'orders']
@@ -155,13 +156,26 @@ class Shipwire():
         resource = endpoint[1]
         base = "%s://%s/api/v%s" % (protocol, self.host,
                                     self.api_version)
-        if number_words == 2: #ex: ['GET', 'orders']
+        if number_words == 2: # e.g.: ['GET', 'orders']
             uri = "%s/%s" % (base, resource)
-        elif number_words == 3: #ex: ['GET', 'orders', 'returns']
+        elif number_words == 3: # e.g.: ['GET', 'orders', '/returns']
             if 'id' not in self.call_params:
                 raise ShipwireError('An \'id\' is required for this api call.')
             method = endpoint[2]
             uri = "%s/%s/%s%s" % (base, resource,
                                   self.call_params.get('id'),
                                   method)
+        elif number_words == 4: # e.g.: ['GET' , 'orders', 'items', '/serialNumbers']
+            if 'id' not in self.call_params:
+                raise ShipwireError('An \'id\' is required for this api call.')
+            if 'item_id' not in self.call_params:
+                raise ShipwireError('An \'item_id\' is required for this api call.')
+            subresource = endpoint[2]
+            method = endpoint[3]
+            uri = "%s/%s/%s/%s/%s%s" % (base,
+                                     resource,
+                                     self.call_params.get('id'),
+                                     subresource,
+                                     self.call_params.get('item_id'),
+                                     method)
         return uri

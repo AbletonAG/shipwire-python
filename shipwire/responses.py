@@ -134,3 +134,6 @@ class Split_ordersResponse(ListResponse):
 
 class ApproveResponse(ShipwireResponse):
     pass
+
+class Serial_numbersResponse(ListResponse):
+    pass
