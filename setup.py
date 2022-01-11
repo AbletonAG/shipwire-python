@@ -1,8 +1,8 @@
-from distutils.core import setup
+from setuptools import setup
 setup(
   name = 'shipwire',
   packages = ['shipwire'], # this must be the same as the name above
-  version = '0.9.3.ableton',
+  version = '0.9.3+ableton',
   description = 'A Python abstraction layer around the Shipwire API.',
   author = 'Neil Durbin, John Coogan, Clark Fischer',
   author_email = 'neildurbin@gmail.com',
